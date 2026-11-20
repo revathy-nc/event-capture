@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildCsv, detailsFor, type StoredEvent } from './export';
+import { buildCsv, detailsFor, exportFilename, type StoredEvent } from './export';
 
 function event(overrides: Partial<StoredEvent> = {}): StoredEvent {
   return {
@@ -51,8 +51,15 @@ describe('detailsFor', () => {
   });
 });
 
-describe('buildCsv', () => {
-  it('writes six quoted columns and escapes JSON', () => {
+describe('exportFilename', () => {
+  it('includes the date and time', () => {
+    expect(exportFilename(new Date(2026, 10, 20, 14, 5, 9))).toBe(
+      'events-2026-11-20_14-05-09.csv',
+    );
+  });
+});
+
+describe('buildCsv', () => {  it('writes six quoted columns and escapes JSON', () => {
     const csv = buildCsv([event()]);
     const [header, row] = csv.split('\r\n');
 

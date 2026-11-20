@@ -76,8 +76,18 @@ export function buildCsv(events: StoredEvent[]): string {
   return lines.join('\r\n');
 }
 
-function today(): string {
-  return new Date().toISOString().slice(0, 10);
+function pad(value: number): string {
+  return String(value).padStart(2, '0');
+}
+
+export function exportFilename(date = new Date()): string {
+  const stamp = [
+    date.getFullYear(),
+    pad(date.getMonth() + 1),
+    pad(date.getDate()),
+  ].join('-');
+  const time = [pad(date.getHours()), pad(date.getMinutes()), pad(date.getSeconds())].join('-');
+  return `events-${stamp}_${time}.csv`;
 }
 
 export async function exportEventsCsv(): Promise<number> {
@@ -88,7 +98,7 @@ export async function exportEventsCsv(): Promise<number> {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `events-${today()}.csv`;
+  link.download = exportFilename();
   document.body.append(link);
   link.click();
   link.remove();

@@ -29,7 +29,7 @@ browsing.
 | Adapter | Amazon-like marketplace (ASIN / `data-asin` / `/dp/`), generic fallback |
 | Runtime | Extension only — no collector, no endpoint, no background server |
 | Storage | IndexedDB inside the extension; events kept until the user clears them |
-| Export | One `all_events.csv` download from the popup (Blob + `<a download>`) |
+| Export | One timestamped CSV download from the popup (Blob + `<a download>`) |
 | Privacy | Redaction gate before storage; no passwords/tokens/headers/full HTML |
 
 No Parquet, no analysis CLI, no CSV-on-disk pipeline. Export is generated on
@@ -185,7 +185,8 @@ The local FastAPI collector, analysis CLI, Python tests, `pyproject.toml`,
 
 ### Export
 
-Popup **Export CSV** produces one file, `all_events.csv`, with six columns:
+Popup **Export CSV** produces one file named
+`events-<date>_<time>.csv`, with six columns:
 
 | Column | Source |
 |---|---|

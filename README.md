@@ -45,7 +45,7 @@ npm run dev          # load extension/.output/chrome-mv3-dev
 ### Export
 
 Click **Export CSV** in the popup. One file is downloaded, e.g.
-`events-2026-11-19.csv`, with these columns:
+`events-2026-11-20_14-05-09.csv`, with these columns:
 
 ```
 event_id, session_id, type, details_json, client_timestamp, created_at

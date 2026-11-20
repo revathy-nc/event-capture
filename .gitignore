@@ -7,4 +7,5 @@ extension/.wxt/
 *.log
 .DS_Store
 
+# Exported CSV files
 *.csv
