@@ -1,0 +1,8 @@
+# Runtime / build output
+extension/node_modules/
+extension/.output/
+extension/.wxt/
+
+# Logs / OS noise
+*.log
+.DS_Store

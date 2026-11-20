@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Capture — Options</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+      body {
+        max-width: 620px;
+        margin: 32px auto;
+        padding: 0 16px;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      label {
+        display: block;
+        margin: 18px 0 6px;
+        font-weight: 600;
+      }
+      .hint {
+        opacity: 0.7;
+        font-size: 12px;
+        margin: 4px 0 0;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        min-height: 120px;
+        font: inherit;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        border-radius: 6px;
+        border: 1px solid #8886;
+        background: #8881;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      button {
+        font: inherit;
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: 1px solid #2563eb;
+        background: #2563eb;
+        color: white;
+        cursor: pointer;
+      }
+      #save-status {
+        opacity: 0.75;
+      }
+      fieldset {
+        border: 1px solid #8884;
+        border-radius: 8px;
+        margin-top: 20px;
+        padding: 8px 14px 14px;
+      }
+      legend {
+        font-weight: 600;
+        padding: 0 6px;
+      }
+      .event-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px 16px;
+      }
+      .event-grid label {
+        margin: 0;
+        font-weight: 400;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Capture — Options</h1>
+
+    <label for="allowlist">Allowed sites</label>
+    <textarea id="allowlist" placeholder="example.com&#10;*.example.com&#10;amazon.com"></textarea>
+    <p class="hint">
+      One host per line. Exact hosts also match their subdomains. Use <code>*</code> to capture
+      everywhere (not recommended). Capture is off for any site not listed here.
+    </p>
+
+    <fieldset>
+      <legend>Events</legend>
+      <p class="hint" style="margin: 0 0 8px">
+        Uncheck any event you do not want captured.
+      </p>
+      <div id="events" class="event-grid"></div>
+    </fieldset>
+
+    <div class="row">
+      <button id="save">Save</button>
+      <span id="save-status"></span>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
