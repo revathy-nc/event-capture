@@ -6,3 +6,5 @@ extension/.wxt/
 # Logs / OS noise
 *.log
 .DS_Store
+
+*.csv
